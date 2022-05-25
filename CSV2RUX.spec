@@ -8,7 +8,7 @@ a = Analysis(
     ['scripts\\CSV2RUX.py'],
     pathex=['C:\\Users\\wil9fd\\csv2rux_dev'],
     binaries=[],
-    datas=[('images\\icon.png', '.')],
+    datas=[('images\\icon.png', '.'),('images\\icon.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
