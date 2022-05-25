@@ -8,3 +8,4 @@ git add -A
 git commit -m "Yet another update" --all 
 git push ghub 
 git push bitbucket
+cmd /k
