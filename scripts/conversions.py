@@ -664,7 +664,7 @@ class Funcs():
         
         # Show the time to completion estimate
         self.completiontime.setText(self.time_str)
-        self.totaldist.setText('{:.2f} Naitucal Miles'.format(self.sum_dist))
+        self.totaldist.setText('{:.2f} Nautical Miles'.format(self.sum_dist))
         
     
     def write_rux(self):
