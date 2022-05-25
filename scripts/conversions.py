@@ -6,21 +6,28 @@ Created on Thu Mar 24 14:28:42 2022
 @author: wil9fd
 """
 
-from pathlib import Path
-from re import split 
-from PyQt5.QtWidgets import QLineEdit, QMessageBox, QDoubleSpinBox, QComboBox
-from pandas import read_csv, concat, DataFrame
-from csv import Sniffer
-from numpy import inf, sqrt, arange, array2string
+# Python script import
 import GUI
+
+# Externally installed packages
 from utm import from_latlon
 from geopy import distance
-from lxml.etree import Element, SubElement, ElementTree
-from os import mkdir, path
 from pyqtgraph import PlotWidget
+from pandas import read_csv, concat, DataFrame
+from numpy import inf, sqrt, arange, array2string
+from lxml.etree import Element, SubElement, ElementTree
 from PyQt5.QtGui import QFont, QPainterPath, QTransform
+from PyQt5.QtWidgets import QLineEdit, QMessageBox, QDoubleSpinBox, QComboBox
+
+# Base python packages
+from re import split 
+from csv import Sniffer
+from pathlib import Path
+from os import mkdir, path
 
 
+
+#### START ####
 
 class Funcs():
     
@@ -613,7 +620,7 @@ class Funcs():
         Minutes = 60 * (Hours % 1)
         Seconds = 60 * (Minutes % 1)
         
-        self.time_str = str("%d Hrs, %02d Min, %02d Sec" % (Hours, Minutes, Seconds))        
+        self.time_str = str("%d:%02d:%02d" % (Hours, Minutes, Seconds))        
         
     def format_rux(self):
         # Insert new first column as id from 1 as first
@@ -664,7 +671,7 @@ class Funcs():
         
         # Show the time to completion estimate
         self.completiontime.setText(self.time_str)
-        self.totaldist.setText('{:.2f} Nautical Miles'.format(self.sum_dist))
+        self.totaldist.setText('{:.2f} Naut-Miles'.format(self.sum_dist))
         
     
     def write_rux(self):

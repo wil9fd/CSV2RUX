@@ -7,13 +7,22 @@ Created on Mon Mar  7 13:11:51 2022
 """
 
 from os import path
-from PyQt5.QtGui import QIcon
-from traceback import format_exc
-from pyqtgraph import PlotWidget
-from pathlib import Path
-from PyQt5.QtWidgets import QWidget, QMessageBox, QErrorMessage, QPushButton, QLabel, QLineEdit, QComboBox, QDoubleSpinBox, QFileDialog, QGridLayout
+
+
+# Python script import
 import executables, conversions
+
+# Externally installed packages
+from PyQt5.QtGui import QIcon
+from pyqtgraph import PlotWidget
+from PyQt5.QtWidgets import QWidget, QMessageBox, QErrorMessage, QPushButton, QLabel, QLineEdit, QComboBox, QDoubleSpinBox, QFileDialog, QGridLayout
+
+# Base python packages
+from traceback import format_exc
+from pathlib import Path
 from ctypes import windll
+
+#### START ####
 
 myappid = 'mycompany.myproduct.subproduct.version' # arbitrary string
 windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
@@ -141,7 +150,7 @@ formatting differences.''')
         self.totaldist.setReadOnly(True)
         self.mainLayout.addWidget(self.totaldist, 0, 6)
         
-        self.mainLayout.addWidget(QLabel('Estimated Completion Time:'), 0, 7)
+        self.mainLayout.addWidget(QLabel('Est. Comp. Time (H:M:S):'), 0, 7)
         self.completiontime.setReadOnly(True)
         self.mainLayout.addWidget(self.completiontime, 0, 8)
         

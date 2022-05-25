@@ -5,14 +5,18 @@ Created on Thu Mar 24 14:28:42 2022
 
 @author: wil9fd
 """
-
-from pandas import set_option
+# Python script import
 import GUI, conversions
+
+# Externally installed packages
+from pandas import set_option
+
+# Base python packages
 from sys import stdout, __stdout__
 from os import devnull
 
 
-
+#### START ####
 
 class Execs():
     
@@ -55,7 +59,11 @@ class Execs():
         print('\n########WRITTEN########\n\n')
         
     def auto_fill(self):
+        '''
+        Auto fill uses the functions from conversions to automatically input the delimiter, input type and filenames
+        '''
         def blockPrint():
+            # Stop print prompts from conversions.py
             stdout = open(devnull, 'w')
 
         # Restore
@@ -63,11 +71,7 @@ class Execs():
             stdout = __stdout__
         set_option("display.max_rows", None, "display.max_columns", None)
 
-        '''
-        Calls functions that automatically fill GUI inputs
-
-        '''        
-        # Show all of dataframe 
+    
         set_option("display.max_rows", None, "display.max_columns", None)
         blockPrint()
         conversions.Funcs.import_inputs(self)
@@ -81,6 +85,9 @@ class Execs():
         
         
     def plot(self):
+        '''
+        Plot the input file to the plotting window of the GUI
+        '''
         def blockPrint():
             stdout = open(devnull, 'w')
 
