@@ -26,5 +26,7 @@ The order of lat and lon columnwise is unimportant ONLY IN THE SOUTHERN HEMISHPE
 ## The program file
 The program file is created by PyInstaller and the included spec file. A venv with the required packages (pandas, geopy, lxml, numpy, PyQt5, pyinstaller, pyqtgraph, utm) should be created to reduce the application's file size. This venv path should be included in the `pathex` variable in the .spec file. After the scripts have been changed, a new application folder must be made, zipped and pushed along with the code changes. 
 
+There is an `update.bat` to streamline the process of updating. The paths must be modified by the developer to be used. 
+
 ### Contact
 For more information contact samson.williams@csiro.au
