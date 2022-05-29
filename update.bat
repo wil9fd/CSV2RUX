@@ -7,7 +7,7 @@ powershell Compress-Archive C:\Users\wil9fd\csv2rux_python_v1.0.0\dist\CSV2RUX\*
 rmdir /s /q build
 rmdir /s /q dist
 git add -A 
-git commit -m "Yet another update" --all 
+git commit -m "Changed RUX xml encoding" --all 
 git push ghub 
 git push bitbucket
 cmd /k

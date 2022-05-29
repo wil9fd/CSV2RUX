@@ -711,7 +711,7 @@ class Funcs():
             # Create the xml tree from root
             tree = ElementTree(root)
             # Write it to file
-            tree.write(outname, pretty_print = True, encoding='ISO-8859-1', xml_declaration=True)
+            tree.write(outname, pretty_print = True, encoding='UTF-8', xml_declaration=True)
             
             
         
