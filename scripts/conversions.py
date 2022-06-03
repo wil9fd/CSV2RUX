@@ -377,6 +377,9 @@ class Funcs():
         # If in ddd then do nothing
         elif len(LL) == 1:
             self.LLformat = 'ddd'
+
+        # Round values to 8 dp
+        self.LL_df.round(8)
                    
         # If lon columns are before lats then switch order 
         # CAN ONLY BE DONE IN SOUTHERN HEMISPHERE
