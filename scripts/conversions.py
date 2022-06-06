@@ -569,7 +569,7 @@ class Funcs():
         # Get the lats and lons into a list 
         self.point_list = self.input_df.iloc[:,[1,2]].values
         # Make an empty list for the turn radii
-        self.radius_list = [self.turnradius.value()] * len(self.input_df)
+        self.radius_list = [float(self.turnradius.value())] * len(self.input_df)
         
         # The radius needs 3 points for the calculation so the start and end points are excluded
         for index in range(1,(len(self.input_df)-1)):
