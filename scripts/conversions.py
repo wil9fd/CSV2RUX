@@ -540,7 +540,7 @@ class Funcs():
         
     def turn_radius(self): 
         
-        rad_list = [str(self.turnradius.value())] * len(self.input_df)
+        rad_list = ["{:.4f}".format(self.turnradius.value())] * len(self.input_df)
         self.input_df.insert(self.input_df.shape[1], column = 'TurnRadius', value = rad_list)
         
     def calculate_radius(self):
@@ -743,6 +743,13 @@ class Funcs():
                 new_file_name = str(folder_name) + '\\' + str(self.file_tag) + '_{:}-{:}.rux'.format(index+1,index+2)
                 df2rux(range(1),self.input_df.iloc[[index,index+1],:],new_file_name)
 
+    def write_rux_txt(self):
+        with open(self.inputs['outputFile'], 'w') as rux_file:
+            rux_file.write('<?xml version="1.0" encoding="UTF-8"?>\n\n')
+            rux_file.write('<KM_Route xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" RtName="SISJob">\n')
+            rux_file.write()
+    
+    
     def make_fledfile(self):
         '''
         Write fledermaus line file
