@@ -377,9 +377,6 @@ class Funcs():
         # If in ddd then do nothing
         elif len(LL) == 1:
             self.LLformat = 'ddd'
-
-        # Round values to 8 dp
-        self.LL_df.round(8)
                    
         # If lon columns are before lats then switch order 
         # CAN ONLY BE DONE IN SOUTHERN HEMISPHERE
@@ -540,7 +537,7 @@ class Funcs():
         
     def turn_radius(self): 
         
-        rad_list = ["{:.4f}".format(self.turnradius.value())] * len(self.input_df)
+        rad_list = [str(self.turnradius.value())] * len(self.input_df)
         self.input_df.insert(self.input_df.shape[1], column = 'TurnRadius', value = rad_list)
         
     def calculate_radius(self):
@@ -572,7 +569,7 @@ class Funcs():
         # Get the lats and lons into a list 
         self.point_list = self.input_df.iloc[:,[1,2]].values
         # Make an empty list for the turn radii
-        self.radius_list = [' '] * len(self.input_df)
+        self.radius_list = [self.turnradius.value()] * len(self.input_df)
         
         # The radius needs 3 points for the calculation so the start and end points are excluded
         for index in range(1,(len(self.input_df)-1)):
@@ -708,9 +705,9 @@ class Funcs():
                     waypoint = SubElement(waypoints, 'Waypoint',
                                                 Id = str(row['Id']),
                                                 WPName = str(row['WPName']),
-                                                Lat = str(row['Lat']),
-                                                Lon = str(row['Lon']),
-                                                TurnRadius = str(row['TurnRadius']))
+                                                Lat = "{:.8f}".format(row['Lat']),
+                                                Lon = "{:.8f}".format(row['Lon']),
+                                                TurnRadius = "{:.4f}".format(row['TurnRadius']))
             # Create the xml tree from root
             tree = ElementTree(root)
             # Write it to file
@@ -742,12 +739,6 @@ class Funcs():
             for index in range(self.input_df.shape[0]-1):
                 new_file_name = str(folder_name) + '\\' + str(self.file_tag) + '_{:}-{:}.rux'.format(index+1,index+2)
                 df2rux(range(1),self.input_df.iloc[[index,index+1],:],new_file_name)
-
-    def write_rux_txt(self):
-        with open(self.inputs['outputFile'], 'w') as rux_file:
-            rux_file.write('<?xml version="1.0" encoding="UTF-8"?>\n\n')
-            rux_file.write('<KM_Route xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" RtName="SISJob">\n')
-            rux_file.write()
     
     
     def make_fledfile(self):
