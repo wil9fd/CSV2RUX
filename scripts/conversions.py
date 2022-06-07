@@ -537,7 +537,7 @@ class Funcs():
         
     def turn_radius(self): 
         
-        rad_list = [str(self.turnradius.value())] * len(self.input_df)
+        rad_list = [float(self.turnradius.value())] * len(self.input_df)
         self.input_df.insert(self.input_df.shape[1], column = 'TurnRadius', value = rad_list)
         
     def calculate_radius(self):
