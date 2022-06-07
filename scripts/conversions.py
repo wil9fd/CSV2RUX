@@ -710,7 +710,7 @@ class Funcs():
                                                 TurnRadius = "{:.4f}".format(row['TurnRadius']))
             # Create the xml tree from root
             tree = ElementTree(root)
-            indent(tree, space='   ')
+            tree = indent(root, space='   ')
 
             # Write it to file
             tree.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)
