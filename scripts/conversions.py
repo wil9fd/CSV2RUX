@@ -15,7 +15,7 @@ from geopy import distance
 from pyqtgraph import PlotWidget
 from pandas import read_csv, concat, DataFrame
 from numpy import inf, sqrt, arange, array2string
-from lxml.etree import Element, SubElement, ElementTree, indent
+from lxml.etree import Element, SubElement, ElementTree
 from PyQt5.QtGui import QFont, QPainterPath, QTransform
 from PyQt5.QtWidgets import QLineEdit, QMessageBox, QDoubleSpinBox, QComboBox
 
@@ -709,11 +709,15 @@ class Funcs():
                                                 Lon = "{:.6f}".format(row['Lon']),
                                                 TurnRadius = "{:.4f}".format(row['TurnRadius']))
             # Create the xml tree from root
-            tree = ElementTree(root)
-            tree = indent(root, space='   ')
-
+            #tree = ElementTree(root)
+            etree.indent(root, space = '    ')
             # Write it to file
-            tree.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)
+            root.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)
+
+            #root = etree.parse(outname)
+            
+
+
             
         
         # If only one rux is wanted and route is output make it
