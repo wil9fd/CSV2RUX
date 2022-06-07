@@ -697,21 +697,23 @@ class Funcs():
                     new_df = df.loc[[points,points+1]]
                 
                 # Create sub element of root node with waypoint count
-                waypoints = SubElement(root,'Waypoints',
+                waypoints = SubElement(root,'WayPoints',
                                              WpCount = str(new_df.shape[0])) 
                 
                 # Iterate over dataframe and create waypoint nodes with attributes as df column values
                 for index, row in new_df.iterrows():
-                    waypoint = SubElement(waypoints, 'Waypoint',
+                    waypoint = SubElement(waypoints, 'WayPoint',
                                                 Id = str(row['Id']),
                                                 WPName = str(row['WPName']),
-                                                Lat = "{:.8f}".format(row['Lat']),
-                                                Lon = "{:.8f}".format(row['Lon']),
+                                                Lat = "{:.6f}".format(row['Lat']),
+                                                Lon = "{:.6f}".format(row['Lon']),
                                                 TurnRadius = "{:.4f}".format(row['TurnRadius']))
             # Create the xml tree from root
             tree = ElementTree(root)
+            tree.indent(root, space='   ')
+
             # Write it to file
-            tree.write(outname, pretty_print = True, encoding='UTF-8', xml_declaration=True)
+            tree.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)
             
             
         

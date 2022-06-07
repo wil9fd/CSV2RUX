@@ -7,7 +7,7 @@ powershell Compress-Archive C:\Users\wil9fd\csv2rux_python_v1.0.0\dist\CSV2RUX\*
 rmdir /s /q build
 rmdir /s /q dist
 git add -A 
-git commit -m "Changed turn radius value to float" --all 
+git commit -m "Fixed WayPoint name and etree indentation" --all 
 git push ghub 
 git push bitbucket
 cmd /k
