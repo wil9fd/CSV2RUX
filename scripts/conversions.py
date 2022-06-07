@@ -15,7 +15,7 @@ from geopy import distance
 from pyqtgraph import PlotWidget
 from pandas import read_csv, concat, DataFrame
 from numpy import inf, sqrt, arange, array2string
-from lxml import etree
+from lxml.etree import ElementTree, Element, SubElement
 from PyQt5.QtGui import QFont, QPainterPath, QTransform
 from PyQt5.QtWidgets import QLineEdit, QMessageBox, QDoubleSpinBox, QComboBox
 
@@ -681,7 +681,7 @@ class Funcs():
         def df2rux(df_range, df, outname):
             
             # Create root node with required attributes       
-            root = etree.Element('KM_Route', 
+            root = Element('KM_Route', 
                          nsmap={"xsi": "http://www.w3.org/2001/XMLSchema-instance"},
                          version="1.1", 
                          RtName="SISJob")
@@ -697,31 +697,21 @@ class Funcs():
                     new_df = df.loc[[points,points+1]]
                 
                 # Create sub element of root node with waypoint count
-                waypoints = etree.SubElement(root,'WayPoints',
+                waypoints = SubElement(root,'WayPoints',
                                              WpCount = str(new_df.shape[0])) 
                 
                 # Iterate over dataframe and create waypoint nodes with attributes as df column values
                 for index, row in new_df.iterrows():
-                    waypoint = etree.SubElement(waypoints, 'WayPoint',
+                    waypoint = SubElement(waypoints, 'WayPoint',
                                                 Id = str(row['Id']),
                                                 WPName = str(row['WPName']),
                                                 Lat = "{:.6f}".format(row['Lat']),
                                                 Lon = "{:.6f}".format(row['Lon']),
                                                 TurnRadius = "{:.4f}".format(row['TurnRadius']))
             # Create the xml tree from root
-            tree = etree.ElementTree(root)
+            tree = ElementTree(root)
             # Write it to file
-            tree.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)
-            '''
-            # Re-indent the xml
-            root = etree.parse(outname)
-            etree.indent(root, space = '\t')
-            root.write(outname)
-            '''
-            
-
-
-            
+            tree.write(outname, pretty_print = True, encoding="UTF-8", xml_declaration = True)               
         
         # If only one rux is wanted and route is output make it
         if self.inputs['multiruxfile'] == 'No' and self.inputs['outformat'] == 'Route':
