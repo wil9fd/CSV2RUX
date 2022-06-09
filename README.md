@@ -21,12 +21,15 @@ CSV2RUX uses delimiter and input format interpreters among other functions to au
 The order of lat and lon columnwise is unimportant ONLY IN THE SOUTHERN HEMISHPERE. Else columns should be ordered lat,lon. 
 
 
-# DEV
+### DEV
 
 ## The program file
 The program file is created by PyInstaller and the included spec file. A venv with the required packages (pandas, geopy, lxml, numpy, PyQt5, pyinstaller, pyqtgraph, utm) should be created to reduce the application's file size. This venv path should be included in the `pathex` variable in the .spec file. After the scripts have been changed, a new application folder must be made, zipped and pushed along with the code changes. 
 
 There is an `update.bat` to streamline the process of updating. The paths must be modified by the developer to be used. 
+
+## General XML info
+Rux files are an XML format (extensible markup language). The element names (KM_Route, WayPoints, WayPoint) are all case sensitive (don't ask me how I know it's too painful). The indentation of an XML is purely aesthetic, the formatting of an XML is far more important i.e. ```<element>value</element>``` or ```<element attribute="value"/>```. Further specific information about RUX formatting can be found at: https://stm-stmvalidation.s3.eu-west-1.amazonaws.com/uploads/20190322122013/ECDIS-Annex-S-version-1.1-STM-Extended_29032017_Final_Proposal.pdf
 
 ### Contact
 For more information contact samson.williams@csiro.au
